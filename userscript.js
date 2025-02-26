@@ -4,7 +4,7 @@
 // @namespace       https://github.com/catscarlet/Download-Origin-Image-from-Doubao-without-Watermark
 // @description     从豆包（www.doubao.com）下载无水印图片 Download Origin Image from www.doubao.com without Watermark.
 // @description:en  Download Origin Image from www.doubao.com without Watermark. 从豆包（www.doubao.com）下载无水印图片
-// @version         0.1
+// @version         0.2
 // @author          catscarlet
 // @license         GNU Affero General Public License v3.0
 // @match           https://www.doubao.com/chat/*
@@ -25,8 +25,6 @@
 
                         const link = document.createElement('a');
                         const currentTitle = document.title.replace('- 豆包', '').trim();
-                        const timeStr = getYmdHMS();
-                        const imageName = currentTitle + '-' + timeStr;
                         link.textContent = '点击下载无水印图片: ' + '\n' + currentTitle;
                         link.style.whiteSpace = 'break-spaces';
 
@@ -63,7 +61,7 @@
 
                         link.addEventListener('click', (e) => {
                             e.preventDefault();
-                            getCrossOriginImage(imageUrl, imageName);
+                            getCrossOriginImage(imageUrl, currentTitle);
                         });
 
                         image.parentNode.appendChild(link);
@@ -85,7 +83,7 @@
 
 })();
 
-function getCrossOriginImage(imageUrl, imageName) {
+function getCrossOriginImage(imageUrl, currentTitle) {
     const img = new Image();
     img.crossOrigin = 'anonymous';
 
@@ -95,6 +93,9 @@ function getCrossOriginImage(imageUrl, imageName) {
         canvas.height = img.height;
         const ctx = canvas.getContext('2d');
         ctx.drawImage(img, 0, 0);
+
+        const timeStr = getYmdHMS();
+        const imageName = currentTitle + '-' + timeStr;
 
         canvas.toBlob(function(blob) {
             const url = URL.createObjectURL(blob);
