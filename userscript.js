@@ -4,7 +4,7 @@
 // @namespace       https://github.com/catscarlet/Download-Origin-Image-from-Doubao-without-Watermark
 // @description     从豆包（www.doubao.com）下载无水印图片 Download Origin Image from www.doubao.com without Watermark.
 // @description:en  Download Origin Image from www.doubao.com without Watermark. 从豆包（www.doubao.com）下载无水印图片
-// @version         0.3
+// @version         0.3.1
 // @author          catscarlet
 // @license         GNU Affero General Public License v3.0
 // @match           https://www.doubao.com/chat/*
@@ -43,8 +43,6 @@ const removeDefaultDownloadButton = 1; //Hide Original Download Button by defaul
                         link.textContent = '点击下载无水印图片: ' + '\n' + currentTitle;
                         link.style.whiteSpace = 'break-spaces';
 
-                        const imageUrl = image.src;
-
                         link.classList.add('imagelink-nowatermark');
 
                         link.style.position = 'absolute';
@@ -76,7 +74,7 @@ const removeDefaultDownloadButton = 1; //Hide Original Download Button by defaul
 
                         link.addEventListener('click', (e) => {
                             e.preventDefault();
-                            getCrossOriginImage(imageUrl, currentTitle);
+                            getCrossOriginImage(link, currentTitle);
                         });
 
                         image.parentNode.appendChild(link);
@@ -98,7 +96,7 @@ const removeDefaultDownloadButton = 1; //Hide Original Download Button by defaul
 
 })();
 
-function getCrossOriginImage(imageUrl, currentTitle) {
+function getCrossOriginImage(link, currentTitle) {
     const img = new Image();
     img.crossOrigin = 'anonymous';
 
@@ -127,6 +125,7 @@ function getCrossOriginImage(imageUrl, currentTitle) {
         alert('图片加载失败，请确保图片服务器开启了 CORS 支持。');
     };
 
+    const imageUrl = link.querySelector('img').src;
     img.src = imageUrl;
 
 }
