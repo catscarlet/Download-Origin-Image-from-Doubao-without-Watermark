@@ -2,6 +2,10 @@
 
 (from new to old)
 
+## 0.3.2
+
+- Fix 0.3.1 wrong commit.
+
 ## 0.3.1
 
 - Fix a bug that may cause image download src not update when switching image. Mostly this may happen when using doubao integrated editing feature, like eraser.
