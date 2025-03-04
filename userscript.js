@@ -39,8 +39,8 @@ const removeDefaultDownloadButton = 1; //Hide Original Download Button by defaul
                     if (!image.parentNode.querySelector('.imagelink-nowatermark')) {
 
                         const link = document.createElement('a');
-                        const currentTitle = document.title.replace('- 豆包', '').trim();
-                        link.textContent = '点击下载无水印图片: ' + '\n' + currentTitle;
+
+                        link.textContent = '点击下载无水印图片';
                         link.style.whiteSpace = 'break-spaces';
 
                         link.classList.add('imagelink-nowatermark');
@@ -74,7 +74,7 @@ const removeDefaultDownloadButton = 1; //Hide Original Download Button by defaul
 
                         link.addEventListener('click', (e) => {
                             e.preventDefault();
-                            getCrossOriginImage(link, currentTitle);
+                            getCrossOriginImage(link);
                         });
 
                         image.parentNode.appendChild(link);
@@ -96,7 +96,9 @@ const removeDefaultDownloadButton = 1; //Hide Original Download Button by defaul
 
 })();
 
-function getCrossOriginImage(link, currentTitle) {
+function getCrossOriginImage(link) {
+    const currentTitle = document.title.replace('- 豆包', '').trim();
+    const chatID = document.location.pathname.replace('/chat/', '').trim();
     const img = new Image();
     img.crossOrigin = 'anonymous';
 
@@ -108,7 +110,7 @@ function getCrossOriginImage(link, currentTitle) {
         ctx.drawImage(img, 0, 0);
 
         const timeStr = getYmdHMS();
-        const imageName = currentTitle + '-' + timeStr;
+        const imageName = currentTitle + '-' + chatID + '-' + timeStr;
 
         canvas.toBlob(function(blob) {
             const url = URL.createObjectURL(blob);
