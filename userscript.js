@@ -26,7 +26,6 @@ const removeDefaultDownloadButton = 1; //Hide Original Download Button by defaul
 
                     EditImageDownloadButtons.forEach((EditImageDownloadButton) => {
                         if (EditImageDownloadButton && EditImageDownloadButton.style.display != 'none') {
-
                             EditImageDownloadButton.style.display = 'none';
                         }
                     });
@@ -72,8 +71,7 @@ const removeDefaultDownloadButton = 1; //Hide Original Download Button by defaul
                             this.style.cursor = '';
                         });
 
-                        link.addEventListener('click', (e) => {
-                            e.preventDefault();
+                        link.addEventListener('click', async () => {
                             getCrossOriginImage(link);
                         });
 
@@ -96,39 +94,34 @@ const removeDefaultDownloadButton = 1; //Hide Original Download Button by defaul
 
 })();
 
-function getCrossOriginImage(link) {
+async function getCrossOriginImage(link) {
     const currentTitle = document.title.replace('- 豆包', '').trim();
     const chatID = document.location.pathname.replace('/chat/', '').trim();
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
+    const timeStr = getYmdHMS();
+    const imageUrl = link.parentNode.querySelector('img').src;
+    const imageName = currentTitle + '-' + chatID + '-' + timeStr + '.png';
 
-    img.onload = function() {
-        const canvas = document.createElement('canvas');
-        canvas.width = img.width;
-        canvas.height = img.height;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(img, 0, 0);
-
-        const timeStr = getYmdHMS();
-        const imageName = currentTitle + '-' + chatID + '-' + timeStr;
-
-        canvas.toBlob(function(blob) {
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = imageName + '.png';
+    try {
+        const response = await fetch(imageUrl, {mode: 'cors'});
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = imageName;
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        setTimeout(() => {
             a.click();
+        }, 10);
+        setTimeout(() => {
             URL.revokeObjectURL(url);
-        });
-    };
+            document.body.removeChild(a);
+        }, 1000);
 
-    img.onerror = function() {
+    } catch (error) {
         console.error('图片加载失败，请确保图片服务器开启了 CORS 支持。');
         alert('图片加载失败，请确保图片服务器开启了 CORS 支持。');
-    };
-
-    const imageUrl = link.parentNode.querySelector('img').src;
-    img.src = imageUrl;
+    }
 
 }
 
