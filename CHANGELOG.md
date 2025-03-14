@@ -2,6 +2,10 @@
 
 (from new to old)
 
+## 0.4.1
+
+- Update querySelector to match doubao update.
+
 ## 0.4
 
 - **Change the way of crossdomain downloading from canvas to fetch.**
