@@ -1,8 +1,8 @@
 # 从豆包下载无水印图片 Download Origin Image from Doubao without Watermark
 
-这是一个可以让你从 从 *[豆包（www.doubao.com）](www.doubao.com)* 下载无水印图片 的 userscript 。
+这是一个可以让你从 从 *[豆包（www.doubao.com）](https://www.doubao.com)* 下载无水印图片 的 userscript 。
 
-**重要提示**：此脚本可能会随着 *[豆包（www.doubao.com）](www.doubao.com)* 网站的更新而失效。
+**重要提示**：此脚本可能会随着 *[豆包（www.doubao.com）](https://www.doubao.com)* 网站的更新而失效。
 
 ## 截图
 
@@ -34,7 +34,7 @@
 
 ### 使用
 
-成功安装后，图片的左上角会新增一个 *下载按钮* 。点击后会下载由 *当前标题+时间为文件名* 的无水印图片。
+成功安装后，图片的左上角会新增一个 *下载按钮* 。点击后会下载由 *当前标题+会话ID+下载时间* 为文件名的无水印图片。
 
 ![snap2.jpg](snap2.jpg)
 
