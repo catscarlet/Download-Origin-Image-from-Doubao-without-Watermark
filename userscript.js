@@ -4,7 +4,7 @@
 // @namespace       https://github.com/catscarlet/Download-Origin-Image-from-Doubao-without-Watermark
 // @description     从豆包（www.doubao.com）下载无水印图片 Download Origin Image from www.doubao.com without Watermark.
 // @description:en  Download Origin Image from www.doubao.com without Watermark. 从豆包（www.doubao.com）下载无水印图片
-// @version         0.4.1
+// @version         0.5.0
 // @author          catscarlet
 // @license         GNU Affero General Public License v3.0
 // @match           https://www.doubao.com/chat/*
@@ -17,77 +17,94 @@ const removeDefaultDownloadButton = 1; //Hide Original Download Button by defaul
 (function() {
     'use strict';
 
+    let throttleTimer;
+    let debounceTimer;
     const observer = new MutationObserver((mutationsList) => {
-        for (const mutation of mutationsList) {
-            if (mutation.type === 'childList' || mutation.type === 'attributes') {
+        const now = Date.now();
 
-                if (removeDefaultDownloadButton) {
-                    const EditImageDownloadButtons = document.querySelectorAll('div[data-testid="edit_image_download_button"]');
+        if (!throttleTimer || now - throttleTimer > 300) {
+            throttleTimer = now;
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                for (const mutation of mutationsList) {
+                    if (mutation.type === 'childList') {
 
-                    EditImageDownloadButtons.forEach((EditImageDownloadButton) => {
-                        if (EditImageDownloadButton && EditImageDownloadButton.style.display != 'none') {
-                            EditImageDownloadButton.style.display = 'none';
+
+
+                        if (removeDefaultDownloadButton) {
+                            const EditImageDownloadButtons = document.querySelectorAll('div[data-testid="edit_image_download_button"]');
+
+                            EditImageDownloadButtons.forEach((EditImageDownloadButton) => {
+                                if (EditImageDownloadButton && EditImageDownloadButton.style.display != 'none') {
+                                    EditImageDownloadButton.style.display = 'none';
+                                }
+                            });
+
                         }
-                    });
 
-                }
+                        const images = document.querySelectorAll('img.preview-img-fe4pbK.img-bg-l0S60q');
 
-                const images = document.querySelectorAll('img.preview-img-fe4pbK');
 
-                images.forEach((image) => {
+                        if (images.length == 0) {
+                            return false;
+                        }
 
-                    if (!image.parentNode.querySelector('.imagelink-nowatermark')) {
+                        images.forEach((image) => {
 
-                        const link = document.createElement('a');
+                            if (!image.parentNode.querySelector('.imagelink-nowatermark')) {
 
-                        link.textContent = '点击下载无水印图片';
-                        link.style.whiteSpace = 'break-spaces';
+                                const link = document.createElement('a');
 
-                        link.classList.add('imagelink-nowatermark');
+                                link.textContent = '点击下载无水印图片';
+                                link.style.whiteSpace = 'break-spaces';
 
-                        link.style.position = 'absolute';
-                        link.style.backgroundColor = '#007BFF';
-                        link.style.color = 'white';
-                        link.style.padding = '10px 20px';
-                        link.style.border = 'none';
-                        link.style.borderRadius = '5px';
+                                link.classList.add('imagelink-nowatermark');
 
-                        link.style.zIndex = 1;
-                        link.style.textDecoration = 'none';
-                        link.style.opacity = '0.8';
+                                link.style.position = 'absolute';
+                                link.style.backgroundColor = '#007BFF';
+                                link.style.color = 'white';
+                                link.style.padding = '10px 20px';
+                                link.style.border = 'none';
+                                link.style.borderRadius = '5px';
 
-                        const x = 0;
-                        const y = 0;
+                                link.style.zIndex = 1;
+                                link.style.textDecoration = 'none';
+                                link.style.opacity = '0.8';
 
-                        link.style.left = x + 'px';
-                        link.style.top = y + 'px';
+                                const x = 0;
+                                const y = 0;
 
-                        link.addEventListener('mouseover', function() {
-                            this.style.backgroundColor = '#0056b3';
-                            this.style.cursor = 'pointer';
+                                link.style.left = x + 'px';
+                                link.style.top = y + 'px';
+
+                                link.addEventListener('mouseover', function() {
+                                    this.style.backgroundColor = '#0056b3';
+                                    this.style.cursor = 'pointer';
+                                });
+
+                                link.addEventListener('mouseout', function() {
+                                    this.style.backgroundColor = '#007BFF';
+                                    this.style.cursor = '';
+                                });
+
+                                link.addEventListener('click', async () => {
+                                    getCrossOriginImage(link);
+                                });
+
+                                image.parentNode.appendChild(link);
+                            } else {
+                                //console.log('added, skip.');
+                            }
                         });
-
-                        link.addEventListener('mouseout', function() {
-                            this.style.backgroundColor = '#007BFF';
-                            this.style.cursor = '';
-                        });
-
-                        link.addEventListener('click', async () => {
-                            getCrossOriginImage(link);
-                        });
-
-                        image.parentNode.appendChild(link);
-                    } else {
-                        //console.log('added, skip.');
                     }
-                });
-            }
+                }
+            }, 300);
         }
     });
 
     const config = {
         childList: true,
-        attributes: true,
+        attributes: false,
         subtree: true,
     };
 

@@ -2,6 +2,13 @@
 
 (from new to old)
 
+## 0.5.0
+
+- Add throttle and debounce for MutationObserver
+- Change MutationObserver attributes moniting to false.
+
+Trying to reduce the cost when the page is changing.
+
 ## 0.4.1
 
 - Update querySelector to match doubao update.
