@@ -1,6 +1,9 @@
 # CHANGELOG
 
 (from new to old)
+## 0.5.1
+
+- Update querySelector to match doubao update.
 
 ## 0.5.0
 
