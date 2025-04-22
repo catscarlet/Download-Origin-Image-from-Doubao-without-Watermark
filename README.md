@@ -28,7 +28,7 @@
 
 脚本可正确在以下浏览器中运行。
 
-- Firefox: 136.0.1
+- Firefox: 137.0.2
 - Firefox ESR: 115.21.0esr
 - Chrome: 109.0.5414.120
 
