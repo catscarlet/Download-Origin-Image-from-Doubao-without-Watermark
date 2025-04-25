@@ -12,7 +12,9 @@
 
 ### 安装
 
-用户需先安装用户脚本管理器，推荐使用 **[油猴（Tampermonkey）](https://www.tampermonkey.net/)**：
+#### ①安装用户脚本管理器
+
+用户需先安装用户脚本管理器，推荐使用 **[篡改猴/油猴（Tampermonkey）](https://www.tampermonkey.net/)**：
 
 -   [火狐附加组件](https://addons.mozilla.org/zh-CN/firefox/addon/tampermonkey/)
 -   [Chrome 应用商店 扩展程序](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=zh-CN)
@@ -20,11 +22,18 @@
 
 或其他同类扩展程序。用户脚本管理器的安装等相关资料均可参见 [Greasy Fork](https://greasyfork.org/)。
 
-之后安装本用户脚本。脚本安装地址：<https://greasyfork.org/scripts/527890>，点击页面上的 _安装此脚本_ 即可。
+#### ②安装本用户脚本
 
-如果您访问 greasyfork.org 有困难，可以尝试这个 [GitHub链接](https://raw.githubusercontent.com/catscarlet/Download-Origin-Image-from-Doubao-without-Watermark/refs/heads/main/Download-Origin-Image-from-Doubao-without-Watermark.user.js) 进行安装
+在完成安装用户脚本管理器后，安装本用户脚本。以下提供两种安装渠道：
+
+- Greasyfork脚本安装地址：<https://greasyfork.org/scripts/527890>，点击页面上的 _安装此脚本_ 即可。
+- 如果您访问 greasyfork.org 有困难，可以尝试这个 [GitHub链接](https://raw.githubusercontent.com/catscarlet/Download-Origin-Image-from-Doubao-without-Watermark/refs/heads/main/Download-Origin-Image-from-Doubao-without-Watermark.user.js) 进行安装
 
 ### 兼容性
+
+脚本可正确在以下用户脚本管理器中运行
+
+- Tampermonkey: 5.3.3
 
 脚本可正确在以下浏览器中运行。
 
