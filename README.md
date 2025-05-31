@@ -1,8 +1,15 @@
-# 从豆包下载无水印图片 Download Origin Image from Doubao without Watermark
+# 从豆包下载 ~无水印~ 图片 Download Origin Image from Doubao ~without Watermark~
 
-这是一个可以让你从 从 *[豆包（www.doubao.com）](https://www.doubao.com)* 下载无水印图片 的 userscript 。
+**豆包已经封杀了从网站上直接获取无水印图片的方式，此脚本已因为豆包的更新而失效。**
 
-**重要提示**：此脚本可能会随着 *[豆包（www.doubao.com）](https://www.doubao.com)* 网站的更新而失效。
+目前网页端给出的图片已自带水印，且其 *下载原图* 功能下载的内容与预览图内容不同。不仅如此，如果使用线上的「视频生成」功能的话，豆包不是用服务器上的无水印原图生成，而是「用你浏览器看到的有水印的缩略图」来生成视频，然后还会再打一次水印上去。参见：<https://www.bilibili.com/video/BV1PG7KznEi4/>
+
+请大家自行找其他方法获取 从豆包下载无水印图片 的方法。
+
+---------
+这曾是一个可以让你从 *[豆包（www.doubao.com）](https://www.doubao.com)* 下载无水印图片 的 userscript 。
+
+**重要提示**：此脚本已随着 *[豆包（www.doubao.com）](https://www.doubao.com)* 网站的更新而失效。
 
 ## 截图
 

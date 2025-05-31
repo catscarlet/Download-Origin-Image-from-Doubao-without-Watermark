@@ -2,6 +2,10 @@
 
 (from new to old)
 
+## 0.6.0
+
+**豆包已经封杀了从网站上直接获取无水印图片的方式，此脚本已因为豆包的更新而失效。**
+
 ## 0.5.2
 
 - Update querySelector to match doubao update.
