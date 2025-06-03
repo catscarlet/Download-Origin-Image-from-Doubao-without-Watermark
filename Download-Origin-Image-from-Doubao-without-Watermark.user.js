@@ -4,7 +4,7 @@
 // @namespace       https://github.com/catscarlet/Download-Origin-Image-from-Doubao-without-Watermark
 // @description     从豆包（www.doubao.com）下载无水印图片 Download Origin Image from www.doubao.com without Watermark.
 // @description:en  Download Origin Image from www.doubao.com without Watermark. 从豆包（www.doubao.com）下载无水印图片
-// @version         0.6.0
+// @version         0.6.1
 // @author          catscarlet
 // @license         GNU Affero General Public License v3.0
 // @match           https://www.doubao.com/chat/*
@@ -52,7 +52,7 @@ const removeDefaultDownloadButton = 1; //Hide Original Download Button by defaul
 
                                 const link = document.createElement('a');
 
-                                link.textContent = '点击下载无水印图片';
+                                link.textContent = '点击下载以「会话名-会话ID-下载时间」为文件名的预览图图片';
                                 link.style.whiteSpace = 'break-spaces';
 
                                 link.classList.add('imagelink-nowatermark');
