@@ -4,6 +4,10 @@
 
 (from new to old)
 
+## 0.6.2
+
+- Update querySelector to match doubao update.
+
 ## 0.6.1
 
 将下载按钮由 '点击下载无水印图片' 更改为 '点击下载以「会话名-会话ID-下载时间」为文件名的预览图图片'
