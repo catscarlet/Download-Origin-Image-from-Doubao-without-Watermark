@@ -4,6 +4,10 @@
 
 (from new to old)
 
+## 0.6.3
+
+- Update querySelector to match doubao update.
+
 ## 0.6.2
 
 - Update querySelector to match doubao update.
