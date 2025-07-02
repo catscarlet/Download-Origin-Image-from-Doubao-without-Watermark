@@ -12,7 +12,7 @@
 // @grant           none
 // ==/UserScript==
 
-const removeDefaultDownloadButton = 1; //Hide Original Download Button by default. If you want the default Download Button appear as usual, set this value to 0.
+const removeDefaultDownloadButton = 0; //Set 1 to hide Original Download Button.
 
 (function() {
     'use strict';
