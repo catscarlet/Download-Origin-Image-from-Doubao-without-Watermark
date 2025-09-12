@@ -4,7 +4,7 @@
 // @namespace       https://github.com/catscarlet/Download-Origin-Image-from-Doubao-without-Watermark
 // @description     从豆包（www.doubao.com）下载无水印图片 Download Origin Image from www.doubao.com without Watermark.
 // @description:en  Download Origin Image from www.doubao.com without Watermark. 从豆包（www.doubao.com）下载无水印图片
-// @version         0.6.3
+// @version         0.6.4
 // @author          catscarlet
 // @license         GNU Affero General Public License v3.0
 // @match           https://www.doubao.com/chat/*
@@ -40,7 +40,7 @@ const removeDefaultDownloadButton = 0; //Set 1 to hide Original Download Button.
 
                         }
 
-                        const images = document.querySelectorAll('img.preview-img-IlQuCi.img-bg-fz6Iim');
+                        const images = document.querySelectorAll('img.preview-img-NSpB7Z.img-bg-LESTN8');
 
                         if (images.length == 0) {
                             return false;
