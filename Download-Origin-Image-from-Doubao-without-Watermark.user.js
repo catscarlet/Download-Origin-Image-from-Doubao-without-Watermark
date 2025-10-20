@@ -40,7 +40,16 @@ const removeDefaultDownloadButton = 0; //Set 1 to hide Original Download Button.
 
                         }
 
-                        const images = document.querySelectorAll('img.preview-img-IlQuCi.img-bg-fz6Iim');
+                        let images = [];
+                        const imagesOldVersion = document.querySelectorAll('img.preview-img-IlQuCi.img-bg-fz6Iim');
+                        const imagesNewVersion = document.querySelectorAll('img.preview-img-NSpB7Z.img-bg-LESTN8');
+
+                        for (const imageValue of imagesOldVersion.values()) {
+                            images.push(imageValue);
+                        }
+                        for (const imageValue of imagesNewVersion.values()) {
+                            images.push(imageValue);
+                        }
 
                         if (images.length == 0) {
                             return false;
