@@ -13,6 +13,7 @@
 // ==/UserScript==
 
 const removeDefaultDownloadButton = 0; //Set 1 to hide Original Download Button.
+const customPostfixName = '';
 
 (function() {
     'use strict';
@@ -123,7 +124,12 @@ async function getCrossOriginImage(link) {
     const chatID = document.location.pathname.replace('/chat/', '').trim();
     const timeStr = getYmdHMS();
     const imageUrl = link.parentNode.querySelector('img').src;
-    const imageName = currentTitle + '-' + chatID + '-' + timeStr + '.png';
+
+    let imageName = currentTitle + '-' + chatID + '-' + timeStr;
+    if (customPostfixName) {
+        imageName = imageName + '-' + customPostfixName;
+    }
+    imageName = imageName + '.png';
 
     try {
         const response = await fetch(imageUrl, {mode: 'cors'});
