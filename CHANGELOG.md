@@ -1,8 +1,26 @@
 # CHANGELOG
 
-**豆包已经封杀了从网站上直接获取无水印图片的方式，此脚本已因为豆包的更新而失效。现在已无法使用下载预览图的方式下载无水印图片。**
+**豆包已经封杀了从网站上直接获取无水印图片的方式，此脚本已因为豆包的更新而失效。现在已无法使用直接下载预览图的方式下载无水印图片。**
 
 (from new to old)
+
+## 0.6.6
+
+- Update querySelector to match Support both old and new UIs.
+
+It seems Doubao has two different UIs but only some accounts can access it.
+
+- Add customPostfixName for multi-browser-accounts.
+
+If you are using different browser or different browser-profile to use mulitple doubao accounts, this is a way to set a difference on filename. Just edit the `customPostfixName` and the filename will be `currentTitle-chatID-timeStr-customPostfixName.png;`. Leave it to empty and the filename will still be `currentTitle-chatID-timeStr.png;`
+
+## 0.6.5
+
+- Update querySelector to match doubao update.
+
+## 0.6.4
+
+- Update querySelector to match doubao update.
 
 ## 0.6.3
 
