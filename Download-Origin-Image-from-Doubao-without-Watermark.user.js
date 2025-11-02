@@ -4,7 +4,7 @@
 // @namespace       https://github.com/catscarlet/Download-Origin-Image-from-Doubao-without-Watermark
 // @description     从豆包（www.doubao.com）下载无水印图片 Download Origin Image from www.doubao.com without Watermark.
 // @description:en  Download Origin Image from www.doubao.com without Watermark. 从豆包（www.doubao.com）下载无水印图片
-// @version         0.6.6
+// @version         0.6.7
 // @author          catscarlet
 // @license         GNU Affero General Public License v3.0
 // @match           https://www.doubao.com/chat/*
@@ -120,6 +120,13 @@ const customPostfixName = '';
 })();
 
 async function getCrossOriginImage(link) {
+
+    const btnOriginStyle = {};
+    btnOriginStyle.cursor = link.style.cursor;
+    btnOriginStyle.backgroundColor = link.style.backgroundColor;
+    link.style.cursor = 'not-allowed';
+    link.style.backgroundColor = 'grey';
+
     const currentTitle = document.title.replace('- 豆包', '').trim();
     const chatID = document.location.pathname.replace('/chat/', '').trim();
     const timeStr = getYmdHMS();
@@ -146,11 +153,15 @@ async function getCrossOriginImage(link) {
         setTimeout(() => {
             URL.revokeObjectURL(url);
             document.body.removeChild(a);
+            link.style.cursor = btnOriginStyle.cursor;
+            link.style.backgroundColor = btnOriginStyle.backgroundColor;
         }, 1000);
 
     } catch (error) {
         console.error('图片加载失败，请确保图片服务器开启了 CORS 支持。');
         alert('图片加载失败，请确保图片服务器开启了 CORS 支持。');
+        link.style.cursor = btnOriginStyle.cursor;
+        link.style.backgroundColor = btnOriginStyle.backgroundColor;
     }
 
 }

@@ -4,6 +4,10 @@
 
 (from new to old)
 
+## 0.6.7
+
+- Add style for button when the image is downloading.
+
 ## 0.6.6
 
 - Update querySelector to match Support both old and new UIs.
