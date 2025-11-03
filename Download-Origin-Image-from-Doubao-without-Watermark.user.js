@@ -70,7 +70,7 @@ const customPostfixName = '';
                                 link.style.position = 'absolute';
                                 link.style.backgroundColor = '#007BFF';
                                 link.style.color = 'white';
-                                link.style.padding = '10px 20px';
+                                link.style.padding = '7px 14px';
                                 link.style.border = 'none';
                                 link.style.borderRadius = '5px';
 
