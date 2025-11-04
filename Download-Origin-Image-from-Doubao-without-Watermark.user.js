@@ -85,11 +85,17 @@ const customPostfixName = '';
                                 link.style.top = y + 'px';
 
                                 link.addEventListener('mouseover', function() {
+                                    if (this.style.cursor == 'not-allowed') {
+                                        return;
+                                    }
                                     this.style.backgroundColor = '#0056b3';
                                     this.style.cursor = 'pointer';
                                 });
 
                                 link.addEventListener('mouseout', function() {
+                                    if (this.style.cursor == 'not-allowed') {
+                                        return;
+                                    }
                                     this.style.backgroundColor = '#007BFF';
                                     this.style.cursor = '';
                                 });
