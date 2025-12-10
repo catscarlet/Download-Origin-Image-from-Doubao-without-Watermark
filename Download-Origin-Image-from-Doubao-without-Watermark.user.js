@@ -4,7 +4,7 @@
 // @namespace       https://github.com/catscarlet/Download-Origin-Image-from-Doubao-without-Watermark
 // @description     从豆包（www.doubao.com）下载无水印图片 Download Origin Image from www.doubao.com without Watermark.
 // @description:en  Download Origin Image from www.doubao.com without Watermark. 从豆包（www.doubao.com）下载无水印图片
-// @version         0.6.7
+// @version         0.6.8
 // @author          catscarlet
 // @license         GNU Affero General Public License v3.0
 // @match           https://www.doubao.com/chat/*
@@ -42,12 +42,15 @@ const customPostfixName = '';
                         }
 
                         let images = [];
-                        const imagesOldVersion = document.querySelectorAll('img.preview-img-IlQuCi.img-bg-fz6Iim');
-                        const imagesNewVersion = document.querySelectorAll('img.preview-img-NSpB7Z.img-bg-LESTN8');
+                        //const imagesOldVersion = document.querySelectorAll('img.preview-img-IlQuCi.img-bg-fz6Iim');
+                        const imagesNewVersion = document.querySelectorAll('div.img-preview-container-aIXnUl');
 
+                        /*
                         for (const imageValue of imagesOldVersion.values()) {
                             images.push(imageValue);
                         }
+                        */
+
                         for (const imageValue of imagesNewVersion.values()) {
                             images.push(imageValue);
                         }
@@ -136,7 +139,9 @@ async function getCrossOriginImage(link) {
     const currentTitle = document.title.replace('- 豆包', '').trim();
     const chatID = document.location.pathname.replace('/chat/', '').trim();
     const timeStr = getYmdHMS();
-    const imageUrl = link.parentNode.querySelector('img').src;
+
+    const imageNodelist = link.parentNode.querySelectorAll('img');
+    const imageUrl = Array.from(imageNodelist).find((element) => element.alt == 'preview').src;
 
     let imageName = currentTitle + '-' + chatID + '-' + timeStr;
     if (customPostfixName) {

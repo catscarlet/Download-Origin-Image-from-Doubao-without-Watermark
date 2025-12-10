@@ -4,6 +4,12 @@
 
 (from new to old)
 
+## 0.6.8
+
+- Update querySelector to match doubao update.
+- Downscale button size for better appearance.
+- Fix visual error when downloading while moving mouse out and over again.
+
 ## 0.6.7
 
 - Add style for button when the image is downloading.
