@@ -13,6 +13,8 @@
 // ==/UserScript==
 
 const removeDefaultDownloadButton = 0; //Set 1 to hide Original Download Button.
+const centerImageEditorButtonPanel = 1; //image_editor_panel
+
 const customPostfixName = '';
 
 (function() {
@@ -20,6 +22,9 @@ const customPostfixName = '';
 
     let throttleTimer;
     let debounceTimer;
+
+    addAndChangeStyles();
+
     const observer = new MutationObserver((mutationsList) => {
         const now = Date.now();
 
@@ -38,7 +43,6 @@ const customPostfixName = '';
                                     EditImageDownloadButton.style.display = 'none';
                                 }
                             });
-
                         }
 
                         let images = [];
@@ -189,4 +193,23 @@ function getYmdHMS() {
     const result = `${Y}${m}${d}${H}${M}${S}`;
 
     return result;
+}
+
+function addAndChangeStyles() {
+
+    if (centerImageEditorButtonPanel == 1) {
+        const style = document.createElement('style');
+        style.type = 'text/css';
+
+        const cssRule = `.left-top-w75xeC {
+            justify-content: center !important;
+        }`;
+
+
+        style.appendChild(document.createTextNode(cssRule));
+
+        const head = document.head || document.documentElement;
+        head.appendChild(style);
+    }
+
 }
