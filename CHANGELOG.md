@@ -4,6 +4,14 @@
 
 (from new to old)
 
+## 0.7.0
+
+- New Feature: centerImageEditorButtonPanel
+
+Center the Image Editor Button Panel so when using the DefaultDownloadButton, the toast won't block buttons.
+Default is ON. Set *centerImageEditorButtonPanel* to 0 to disable it.
+
+
 ## 0.6.8
 
 - Update querySelector to match doubao update.
