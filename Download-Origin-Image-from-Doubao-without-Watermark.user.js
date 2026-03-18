@@ -13,7 +13,7 @@
 // ==/UserScript==
 
 const removeDefaultDownloadButton = 0; //Set 1 to hide Original Download Button.
-const centerImageEditorButtonPanel = 1; //image_editor_panel
+const centerImageEditorButtonPanel = 1; //Center the Image Editor Button Panel so when using the DefaultDownloadButton, the toast won't block buttons. Default is ON. Set centerImageEditorButtonPanel to 0 to disable it.
 
 const customPostfixName = '';
 
