@@ -22,13 +22,14 @@ const customPostfixName = '';
 
     let throttleTimer;
     let debounceTimer;
+    const thresholdValue = 750;
 
     addAndChangeStyles();
 
     const observer = new MutationObserver((mutationsList) => {
         const now = Date.now();
 
-        if (!throttleTimer || now - throttleTimer > 300) {
+        if (!throttleTimer || now - throttleTimer > thresholdValue) {
             throttleTimer = now;
             clearTimeout(debounceTimer);
             debounceTimer = setTimeout(() => {
@@ -88,7 +89,7 @@ const customPostfixName = '';
                         });
                     }
                 }
-            }, 300);
+            }, thresholdValue);
         }
     });
 
