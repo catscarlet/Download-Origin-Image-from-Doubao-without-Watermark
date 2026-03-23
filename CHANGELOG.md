@@ -4,6 +4,17 @@
 
 (from new to old)
 
+## 0.8.0
+
+- New Feature: **Download preview videos**.
+
+You can download preview videos with specified file name now.
+
+- Change class-flag to make compatible with other userscript.
+- Rewrite function createImageDownloadButton.
+- Add comment on Feature: centerImageEditorButtonPanel
+- Increase the threshold from 300 to 750 to reduce system load.
+
 ## 0.7.0
 
 - New Feature: centerImageEditorButtonPanel
