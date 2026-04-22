@@ -4,6 +4,14 @@
 
 (from new to old)
 
+## 0.8.1
+
+The web version of doubao has changed its structure and logic.
+
+**Notice doubao.com is using *canary release* so this new release will not work for old web version. If your web version is not changed, use the old release instead.**
+
+- Update querySelector to match doubao update.
+
 ## 0.8.0
 
 - New Feature: **Download preview videos**.

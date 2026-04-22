@@ -2,6 +2,8 @@
 
 目前本脚本提供 **下载预览图** 的功能。本脚本同时也提供 **下载预览视频** 的功能。
 
+注意：豆包网页端采用 **灰度发布** ，同一时间有约2种不同版本的网页端。如果你的网页端未升级，请使用上一个可用的版本，而非最新版。
+
 ---
 
 **豆包已经封杀了从网站上通过预览图直接获取无水印图片的方式。**
@@ -41,7 +43,7 @@
 
 在完成安装用户脚本管理器后，安装本用户脚本。以下提供两种安装渠道：
 
-- Greasyfork脚本安装地址：<https://greasyfork.org/scripts/527890>，点击页面上的 _安装此脚本_ 即可。
+- 【推荐】Greasyfork脚本安装地址：<https://greasyfork.org/scripts/527890>，点击页面上的 _安装此脚本_ 即可。
 - 如果您访问 greasyfork.org 有困难，可以尝试这个 [GitHub链接](https://raw.githubusercontent.com/catscarlet/Download-Origin-Image-from-Doubao-without-Watermark/refs/heads/main/Download-Origin-Image-from-Doubao-without-Watermark.user.js) 进行安装
 
 ### 使用
@@ -62,11 +64,11 @@
 
 ### 兼容性
 
-脚本可正确在以下用户脚本管理器中运行
+脚本可正确在以下用户脚本管理器中运行：
 
 - Tampermonkey: 5.4.0
 
-脚本可正确在以下浏览器中运行。
+脚本可正确在以下浏览器中运行：
 
 - Firefox: 144.0.0
 - Firefox ESR: 115.22.0esr (Win7 可用)
