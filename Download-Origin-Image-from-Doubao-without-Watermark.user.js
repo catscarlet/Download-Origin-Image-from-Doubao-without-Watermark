@@ -48,15 +48,14 @@ const customPostfixName = '';
 
                         let images = [];
                         let videos = [];
-                        //const imagesOldVersion = document.querySelectorAll('img.preview-img-IlQuCi.img-bg-fz6Iim');
-                        const imagesNewVersion = document.querySelectorAll('div.img-preview-container-aIXnUl');
+
+                        const imagesOldVersion = document.querySelectorAll('div.img-preview-container-aIXnUl');
+                        const imagesNewVersion = document.querySelectorAll('div.relative.flex.h-full.w-full.items-center.justify-center.overflow-hidden');
                         const videosNewVersion = document.querySelectorAll('div.video-canvas-panel-content-fbsXkh');
 
-                        /*
                         for (const imageValue of imagesOldVersion.values()) {
                             images.push(imageValue);
                         }
-                        */
 
                         for (const imageValue of imagesNewVersion.values()) {
                             images.push(imageValue);
@@ -212,7 +211,8 @@ async function getCrossOriginImage(link) {
     const timeStr = getYmdHMS();
 
     const imageNodelist = link.parentNode.querySelectorAll('img');
-    const imageUrl = Array.from(imageNodelist).find((element) => element.alt == 'preview').src;
+    //const imageUrl = Array.from(imageNodelist).find((element) => element.alt == 'preview').src;
+    const imageUrl = Array.from(imageNodelist).find((element) => element.style.getPropertyValue('visibility') != '').src;
 
     let imageName = currentTitle + '-' + chatID + '-' + timeStr;
     if (customPostfixName) {
