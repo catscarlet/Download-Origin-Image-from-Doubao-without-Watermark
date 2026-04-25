@@ -51,7 +51,7 @@ const customPostfixName = '';
 
                         const imagesOldVersion = document.querySelectorAll('div.img-preview-container-aIXnUl');
                         const imagesNewVersion = document.querySelectorAll('div.relative.flex.h-full.w-full.items-center.justify-center.overflow-hidden');
-                        const videosNewVersion = document.querySelectorAll('div.video-canvas-panel-content-fbsXkh');
+                        const videosNewVersion = document.querySelectorAll('div.relative.flex.h-full.w-full.items-center.justify-center.overflow-hidden');
 
                         for (const imageValue of imagesOldVersion.values()) {
                             images.push(imageValue);
@@ -70,6 +70,10 @@ const customPostfixName = '';
                         }
 
                         images.forEach((image) => {
+                            if (image.querySelector('img') == null) {
+                                //console.log('image target does not include <img>, not a image target.');
+                                return;
+                            }
                             if (!image.parentNode.querySelector('.imagelink-nowatermark-527890')) {
                                 const link = createImageDownloadButton();
                                 image.parentNode.appendChild(link);
@@ -79,6 +83,10 @@ const customPostfixName = '';
                         });
 
                         videos.forEach((video) => {
+                            if (video.querySelector('video') == null) {
+                                //console.log('video target does not include <video>, not a video target.');
+                                return;
+                            }
                             if (!video.parentNode.querySelector('.videolink-527890')) {
                                 const link = createVideoDownloadButton();
                                 video.parentNode.appendChild(link);
