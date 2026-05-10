@@ -70,29 +70,32 @@ const customPostfixName = '';
                         }
 
                         images.forEach((image) => {
-                            if (image.querySelector('img') == null) {
-                                //console.log('image target does not include <img>, not a image target.');
+                            if (image.parentNode.querySelector('.imagelink-nowatermark-527890')) {
                                 return;
                             }
-                            if (!image.parentNode.querySelector('.imagelink-nowatermark-527890')) {
-                                const link = createImageDownloadButton();
-                                image.parentNode.appendChild(link);
-                            } else {
-                                //console.log('image.parentNode.appendChild added, skip.');
+                            if (image.querySelector('img') == null) {
+                                image.classList.add('imagelink-nowatermark-527890'); //add this dom a class to reduce query.
+                                return;
                             }
+
+                            const link = createImageDownloadButton();
+                            image.parentNode.appendChild(link);
+
                         });
 
                         videos.forEach((video) => {
-                            if (video.querySelector('video') == null) {
-                                //console.log('video target does not include <video>, not a video target.');
+                            if (video.parentNode.querySelector('.videolink-527890')) {
                                 return;
                             }
-                            if (!video.parentNode.querySelector('.videolink-527890')) {
-                                const link = createVideoDownloadButton();
-                                video.parentNode.appendChild(link);
-                            } else {
-                               //console.log('video.parentNode.appendChild added, skip.');
+
+                            if (video.querySelector('video') == null) {
+                                video.classList.add('videolink-527890'); //add this dom a class to reduce query.
+                                return;
                             }
+
+                            const link = createVideoDownloadButton();
+                            video.parentNode.appendChild(link);
+
                         });
                     }
                 }
