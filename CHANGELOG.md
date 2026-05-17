@@ -2,7 +2,16 @@
 
 **豆包已经封杀了从网站上直接获取无水印图片的方式，此脚本已因为豆包的更新而失效。现在已无法使用直接下载预览图的方式下载无水印图片。**
 
+请注意，豆包使用 **灰度发布**，同一时间有约2种不同版本的网页端，所以不同帐号下的页面结构可能不同。如果你的网页端暂未升级，可能会出现本脚本的新版本不适用的情况。如出现此类情况，请继续使用本脚本的旧版。
+
 (from new to old)
+
+## 0.8.2
+
+All are minor changes.
+
+- Fix image download-btn show on video and video download-btns not show up.
+- Optimize DOM query logic to reduce query frequency.
 
 ## 0.8.1
 

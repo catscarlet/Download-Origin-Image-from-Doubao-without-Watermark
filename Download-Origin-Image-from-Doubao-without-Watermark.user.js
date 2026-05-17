@@ -4,7 +4,7 @@
 // @namespace       https://github.com/catscarlet/Download-Origin-Image-from-Doubao-without-Watermark
 // @description     从豆包（www.doubao.com）下载无水印图片 Download Origin Image from www.doubao.com without Watermark.
 // @description:en  Download Origin Image from www.doubao.com without Watermark. 从豆包（www.doubao.com）下载无水印图片
-// @version         0.8.1
+// @version         0.8.2
 // @author          catscarlet
 // @license         GNU Affero General Public License v3.0
 // @match           https://www.doubao.com/chat/*
@@ -70,32 +70,29 @@ const customPostfixName = '';
                         }
 
                         images.forEach((image) => {
-                            if (image.parentNode.querySelector('.imagelink-nowatermark-527890')) {
-                                return;
-                            }
                             if (image.querySelector('img') == null) {
-                                image.classList.add('imagelink-nowatermark-527890'); //add this dom a class to reduce query.
+                                //console.log('image target does not include <img>, not a image target.');
                                 return;
                             }
-
-                            const link = createImageDownloadButton();
-                            image.parentNode.appendChild(link);
-
+                            if (!image.parentNode.querySelector('.imagelink-nowatermark-527890')) {
+                                const link = createImageDownloadButton();
+                                image.parentNode.appendChild(link);
+                            } else {
+                                //console.log('image.parentNode.appendChild added, skip.');
+                            }
                         });
 
                         videos.forEach((video) => {
-                            if (video.parentNode.querySelector('.videolink-527890')) {
-                                return;
-                            }
-
                             if (video.querySelector('video') == null) {
-                                video.classList.add('videolink-527890'); //add this dom a class to reduce query.
+                                //console.log('video target does not include <video>, not a video target.');
                                 return;
                             }
-
-                            const link = createVideoDownloadButton();
-                            video.parentNode.appendChild(link);
-
+                            if (!video.parentNode.querySelector('.videolink-527890')) {
+                                const link = createVideoDownloadButton();
+                                video.parentNode.appendChild(link);
+                            } else {
+                               //console.log('video.parentNode.appendChild added, skip.');
+                            }
                         });
                     }
                 }
