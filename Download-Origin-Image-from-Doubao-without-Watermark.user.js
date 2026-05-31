@@ -70,8 +70,7 @@ const customPostfixName = '';
                         }
 
                         images.forEach((image) => {
-                            if (image.querySelector('img') == null) {
-                                //console.log('image target does not include <img>, not a image target.');
+                            if (image.querySelector('canvas') == null) {
                                 return;
                             }
                             if (!image.parentNode.querySelector('.imagelink-nowatermark-527890')) {
@@ -108,7 +107,19 @@ const customPostfixName = '';
 
     observer.observe(document.documentElement, config);
 
+    setCanvasDataset();
 })();
+
+function setCanvasDataset() {
+    const originalCanvasRenderingContext2D = CanvasRenderingContext2D.prototype.drawImage;
+    CanvasRenderingContext2D.prototype.drawImage = function(img, ...args) {
+        const targetCanvas = this.canvas;
+        const src = img && (img.currentSrc || img.src) || (img && img.toDataURL && '[canvas/image source]');
+        targetCanvas.dataset['src-527890'] = src;
+
+        return originalCanvasRenderingContext2D.call(this, img, ...args);
+    };
+}
 
 function createImageDownloadButton() {
     const link = document.createElement('a');
@@ -218,9 +229,8 @@ async function getCrossOriginImage(link) {
     const chatID = document.location.pathname.replace('/chat/', '').trim();
     const timeStr = getYmdHMS();
 
-    const imageNodelist = link.parentNode.querySelectorAll('img');
-    //const imageUrl = Array.from(imageNodelist).find((element) => element.alt == 'preview').src;
-    const imageUrl = Array.from(imageNodelist).find((element) => element.style.getPropertyValue('visibility') != '').src;
+    const imageNode = link.parentNode.querySelector('canvas');
+    const imageUrl = imageNode.dataset['src-527890'];
 
     let imageName = currentTitle + '-' + chatID + '-' + timeStr;
     if (customPostfixName) {
