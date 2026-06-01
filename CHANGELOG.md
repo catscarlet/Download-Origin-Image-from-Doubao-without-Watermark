@@ -6,6 +6,12 @@
 
 (from new to old)
 
+## 0.9.0
+
+- Update image download logic to match doubao update.
+
+There are big changes on doubao. Parts of the code in userscript are obsoleted but I don't have enough time to remove them.
+
 ## 0.8.2
 
 All are minor changes.
