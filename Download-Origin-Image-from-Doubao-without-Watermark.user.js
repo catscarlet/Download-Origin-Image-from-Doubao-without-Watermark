@@ -46,51 +46,35 @@ const customPostfixName = '';
                             });
                         }
 
-                        let images = [];
-                        let videos = [];
+                        let itemContainer = [];
+                        let itemItem = document.querySelectorAll('div.relative.flex.h-full.w-full.items-center.justify-center.overflow-hidden');
 
-                        const imagesOldVersion = document.querySelectorAll('div.img-preview-container-aIXnUl');
-                        const imagesNewVersion = document.querySelectorAll('div.relative.flex.h-full.w-full.items-center.justify-center.overflow-hidden');
-                        const videosNewVersion = document.querySelectorAll('div.relative.flex.h-full.w-full.items-center.justify-center.overflow-hidden');
-
-                        for (const imageValue of imagesOldVersion.values()) {
-                            images.push(imageValue);
+                        for (const itemValue of itemItem.values()) {
+                            itemContainer.push(itemValue);
                         }
 
-                        for (const imageValue of imagesNewVersion.values()) {
-                            images.push(imageValue);
-                        }
-
-                        for (const videoValue of videosNewVersion.values()) {
-                            videos.push(videoValue);
-                        }
-
-                        if (images.length == 0 && videos.length == 0) {
+                        if (itemContainer.length == 0) {
                             return false;
                         }
 
-                        images.forEach((image) => {
-                            if (image.querySelector('canvas') == null) {
-                                return;
-                            }
-                            if (!image.parentNode.querySelector('.imagelink-nowatermark-527890')) {
-                                const link = createImageDownloadButton();
-                                image.parentNode.appendChild(link);
-                            } else {
+                        itemContainer.forEach((itemInContainer) => {
+                            if (itemInContainer.parentNode.querySelector('.doubao-nowatermark-527890')) {
                                 //console.log('image.parentNode.appendChild added, skip.');
-                            }
-                        });
-
-                        videos.forEach((video) => {
-                            if (video.querySelector('video') == null) {
-                                //console.log('video target does not include <video>, not a video target.');
                                 return;
                             }
-                            if (!video.parentNode.querySelector('.videolink-527890')) {
+
+                            if (itemInContainer.querySelector('canvas')) {
+                                const link = createImageDownloadButton();
+                                itemInContainer.parentNode.appendChild(link);
+
+                                return;
+                            }
+
+                            if (itemInContainer.querySelector('video')) {
                                 const link = createVideoDownloadButton();
-                                video.parentNode.appendChild(link);
-                            } else {
-                               //console.log('video.parentNode.appendChild added, skip.');
+                                itemInContainer.parentNode.appendChild(link);
+
+                                return;
                             }
                         });
                     }
@@ -127,7 +111,7 @@ function createImageDownloadButton() {
     link.textContent = '点击下载以「会话名-会话ID-下载时间」为文件名的预览图图片';
     link.style.whiteSpace = 'break-spaces';
 
-    link.classList.add('imagelink-nowatermark-527890');
+    link.classList.add('doubao-nowatermark-527890');
 
     link.style.position = 'absolute';
     link.style.backgroundColor = '#007BFF';
@@ -175,7 +159,7 @@ function createVideoDownloadButton() {
     link.textContent = '点击下载以「会话名-会话ID-下载时间」为文件名的预览视频文件';
     link.style.whiteSpace = 'break-spaces';
 
-    link.classList.add('videolink-nowatermark-527890');
+    link.classList.add('doubao-nowatermark-527890');
 
     link.style.position = 'absolute';
     link.style.backgroundColor = '#007BFF';
