@@ -12,9 +12,6 @@
 // @grant           none
 // ==/UserScript==
 
-const removeDefaultDownloadButton = 0; //Set 1 to hide Original Download Button.
-const centerImageEditorButtonPanel = 1; //Center the Image Editor Button Panel so when using the DefaultDownloadButton, the toast won't block buttons. Default is ON. Set centerImageEditorButtonPanel to 0 to disable it.
-
 const customPostfixName = '';
 
 (function() {
@@ -23,8 +20,6 @@ const customPostfixName = '';
     let throttleTimer;
     let debounceTimer;
     const thresholdValue = 750;
-
-    addAndChangeStyles();
 
     const observer = new MutationObserver((mutationsList) => {
         const now = Date.now();
@@ -35,16 +30,6 @@ const customPostfixName = '';
             debounceTimer = setTimeout(() => {
                 for (const mutation of mutationsList) {
                     if (mutation.type === 'childList') {
-
-                        if (removeDefaultDownloadButton) {
-                            const EditImageDownloadButtons = document.querySelectorAll('div[data-testid="edit_image_download_button"]');
-
-                            EditImageDownloadButtons.forEach((EditImageDownloadButton) => {
-                                if (EditImageDownloadButton && EditImageDownloadButton.style.display != 'none') {
-                                    EditImageDownloadButton.style.display = 'none';
-                                }
-                            });
-                        }
 
                         let itemContainer = [];
                         let itemItem = document.querySelectorAll('div.relative.flex.h-full.w-full.items-center.justify-center.overflow-hidden');
@@ -202,7 +187,6 @@ function createVideoDownloadButton() {
 }
 
 async function getCrossOriginImage(link) {
-
     const btnOriginStyle = {};
     btnOriginStyle.cursor = link.style.cursor;
     btnOriginStyle.backgroundColor = link.style.backgroundColor;
@@ -251,7 +235,6 @@ async function getCrossOriginImage(link) {
 }
 
 async function getCrossVideo(link) {
-
     const btnOriginStyle = {};
     btnOriginStyle.cursor = link.style.cursor;
     btnOriginStyle.backgroundColor = link.style.backgroundColor;
@@ -311,21 +294,4 @@ function getYmdHMS() {
     const result = `${Y}${m}${d}${H}${M}${S}`;
 
     return result;
-}
-
-function addAndChangeStyles() {
-
-    if (centerImageEditorButtonPanel == 1) {
-        const style = document.createElement('style');
-        style.type = 'text/css';
-
-        const cssRule = `.left-top-w75xeC {
-            justify-content: center !important;
-        }`;
-
-        style.appendChild(document.createTextNode(cssRule));
-
-        const head = document.head || document.documentElement;
-        head.appendChild(style);
-    }
 }
