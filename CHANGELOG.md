@@ -6,6 +6,11 @@
 
 (from new to old)
 
+## 0.9.1
+
+- Rewrite Selector and flag
+- Remove obsoleted code
+
 ## 0.9.0
 
 - Update image download logic to match doubao update.
