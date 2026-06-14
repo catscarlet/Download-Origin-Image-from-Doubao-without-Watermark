@@ -84,7 +84,10 @@ function setCanvasDataset() {
     CanvasRenderingContext2D.prototype.drawImage = function(img, ...args) {
         const targetCanvas = this.canvas;
         const src = img && (img.currentSrc || img.src) || (img && img.toDataURL && '[canvas/image source]');
-        targetCanvas.dataset['src-527890'] = src;
+
+        if (src.search('data:image') === -1 && src.search('downsize') === -1) {
+            targetCanvas.dataset['src-527890'] = src;
+        }
 
         return originalCanvasRenderingContext2D.call(this, img, ...args);
     };
