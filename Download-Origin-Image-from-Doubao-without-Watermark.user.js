@@ -119,7 +119,7 @@ function createImageDownloadButton() {
     link.style.top = y + 'px';
 
     link.addEventListener('mouseover', function() {
-        if (this.style.cursor == 'not-allowed') {
+        if (this.style.cursor == 'wait') {
             return;
         }
         this.style.backgroundColor = '#0056b3';
@@ -127,7 +127,7 @@ function createImageDownloadButton() {
     });
 
     link.addEventListener('mouseout', function() {
-        if (this.style.cursor == 'not-allowed') {
+        if (this.style.cursor == 'wait') {
             return;
         }
         this.style.backgroundColor = '#007BFF';
@@ -167,7 +167,7 @@ function createVideoDownloadButton() {
     link.style.top = y + 'px';
 
     link.addEventListener('mouseover', function() {
-        if (this.style.cursor == 'not-allowed') {
+        if (this.style.cursor == 'wait') {
             return;
         }
         this.style.backgroundColor = '#0056b3';
@@ -175,7 +175,7 @@ function createVideoDownloadButton() {
     });
 
     link.addEventListener('mouseout', function() {
-        if (this.style.cursor == 'not-allowed') {
+        if (this.style.cursor == 'wait') {
             return;
         }
         this.style.backgroundColor = '#007BFF';
@@ -193,7 +193,7 @@ async function getCrossOriginImage(link) {
     const btnOriginStyle = {};
     btnOriginStyle.cursor = link.style.cursor;
     btnOriginStyle.backgroundColor = link.style.backgroundColor;
-    link.style.cursor = 'not-allowed';
+    link.style.cursor = 'wait';
     link.style.backgroundColor = 'grey';
 
     const currentTitle = document.title.replace('- 豆包', '').trim();
@@ -241,7 +241,7 @@ async function getCrossVideo(link) {
     const btnOriginStyle = {};
     btnOriginStyle.cursor = link.style.cursor;
     btnOriginStyle.backgroundColor = link.style.backgroundColor;
-    link.style.cursor = 'not-allowed';
+    link.style.cursor = 'wait';
     link.style.backgroundColor = 'grey';
 
     const currentTitle = document.title.replace('- 豆包', '').trim();
