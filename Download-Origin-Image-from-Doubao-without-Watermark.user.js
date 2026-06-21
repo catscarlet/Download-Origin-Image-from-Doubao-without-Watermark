@@ -1,9 +1,11 @@
 // ==UserScript==
 // @name            从豆包下载无水印图片 Download Origin Image from Doubao without Watermark
+// @name:zh         从豆包下载无水印图片 Download Origin Image from Doubao without Watermark
 // @name:en         Download Origin Image from Doubao without Watermark 从豆包下载无水印图片
 // @namespace       https://github.com/catscarlet/Download-Origin-Image-from-Doubao-without-Watermark
-// @description     从豆包（www.doubao.com）下载无水印图片 Download Origin Image from www.doubao.com without Watermark.
-// @description:en  Download Origin Image from www.doubao.com without Watermark. 从豆包（www.doubao.com）下载无水印图片
+// @description     从豆包（www.doubao.com）下载无水印图片。 Download Origin Image from www.doubao.com without Watermark.
+// @description:zh  从豆包（www.doubao.com）下载无水印图片。 Download Origin Image from www.doubao.com without Watermark.
+// @description:en  Download Origin Image from www.doubao.com without Watermark. 从豆包（www.doubao.com）下载无水印图片。
 // @version         0.9.1
 // @author          catscarlet
 // @license         GNU Affero General Public License v3.0
