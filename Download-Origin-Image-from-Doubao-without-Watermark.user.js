@@ -6,7 +6,7 @@
 // @description     从豆包（www.doubao.com）下载无水印图片。 Download Origin Image from www.doubao.com without Watermark.
 // @description:zh  从豆包（www.doubao.com）下载无水印图片。 Download Origin Image from www.doubao.com without Watermark.
 // @description:en  Download Origin Image from www.doubao.com without Watermark. 从豆包（www.doubao.com）下载无水印图片。
-// @version         0.9.1
+// @version         0.9.2
 // @author          catscarlet
 // @license         GNU Affero General Public License v3.0
 // @match           https://www.doubao.com/chat/*

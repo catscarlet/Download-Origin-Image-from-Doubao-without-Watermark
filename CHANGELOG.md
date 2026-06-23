@@ -6,6 +6,11 @@
 
 (from new to old)
 
+## 0.9.2
+
+- Change Button Downloading style to 'wait' for better visual effect
+- Fix an issue that may cause the downloading becomes a thumbnail instead of preview image.
+
 ## 0.9.1
 
 - Rewrite Selector and flag
