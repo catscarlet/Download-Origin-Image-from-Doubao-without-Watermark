@@ -15,6 +15,7 @@
 // ==/UserScript==
 
 const customPostfixName = '';
+const useSha256sumPostfix = 1; // Set this to 0 if you still want to use the YmdHMS as file name postfix.
 
 (function() {
     'use strict';
@@ -98,7 +99,12 @@ function setCanvasDataset() {
 function createImageDownloadButton() {
     const link = document.createElement('a');
 
-    link.textContent = '点击下载以「会话名-会话ID-下载时间」为文件名的预览图图片';
+    if (useSha256sumPostfix) {
+        link.textContent = '点击下载以「会话名-会话ID-图片SHA256哈希值」为文件名的预览图图片';
+    } else {
+        link.textContent = '点击下载以「会话名-会话ID-下载时间」为文件名的预览图图片';
+    }
+
     link.style.whiteSpace = 'break-spaces';
 
     link.classList.add('doubao-nowatermark-527890');
@@ -146,7 +152,12 @@ function createImageDownloadButton() {
 function createVideoDownloadButton() {
     const link = document.createElement('a');
 
-    link.textContent = '点击下载以「会话名-会话ID-下载时间」为文件名的预览视频文件';
+    if (useSha256sumPostfix) {
+        link.textContent = '点击下载以「会话名-会话ID-视频SHA256哈希值」为文件名的预览视频文件';
+    } else {
+        link.textContent = '点击下载以「会话名-会话ID-下载时间」为文件名的预览视频文件';
+    }
+
     link.style.whiteSpace = 'break-spaces';
 
     link.classList.add('doubao-nowatermark-527890');
@@ -200,16 +211,10 @@ async function getCrossOriginImage(link) {
 
     const currentTitle = document.title.replace('- 豆包', '').trim();
     const chatID = document.location.pathname.replace('/chat/', '').trim();
-    const timeStr = getYmdHMS();
-
     const imageNode = link.parentNode.querySelector('canvas');
     const imageUrl = imageNode.dataset['src-527890'];
 
-    let imageName = currentTitle + '-' + chatID + '-' + timeStr;
-    if (customPostfixName) {
-        imageName = imageName + '-' + customPostfixName;
-    }
-    imageName = imageName + '.png';
+    let imageName = currentTitle + '-' + chatID + '-';
 
     try {
         const response = await fetch(imageUrl, {mode: 'cors'});
@@ -217,6 +222,20 @@ async function getCrossOriginImage(link) {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
+
+        if (useSha256sumPostfix) {
+            let postfixfull = await getBlobSha256sum(blob);
+            let postfix = postfixfull.substr(0, 12);
+            imageName = imageName + postfix;
+        } else {
+            let timeStr = getYmdHMS();
+            imageName = imageName + timeStr;
+        }
+        if (customPostfixName) {
+            imageName = imageName + '-' + customPostfixName;
+        }
+        imageName = imageName + '.png';
+
         a.download = imageName;
         a.style.display = 'none';
         document.body.appendChild(a);
@@ -248,16 +267,9 @@ async function getCrossVideo(link) {
 
     const currentTitle = document.title.replace('- 豆包', '').trim();
     const chatID = document.location.pathname.replace('/chat/', '').trim();
-    const timeStr = getYmdHMS();
 
     const videoNodelist = link.parentNode.querySelectorAll('video');
     const videoUrl = Array.from(videoNodelist).find((element) => element.tagName.toLowerCase() == 'video').src;
-
-    let videoName = currentTitle + '-' + chatID + '-' + timeStr;
-    if (customPostfixName) {
-        videoName = videoName + '-' + customPostfixName;
-    }
-    videoName = videoName + '.mp4';
 
     try {
         const response = await fetch(videoUrl, {mode: 'cors'});
@@ -265,6 +277,21 @@ async function getCrossVideo(link) {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
+
+        let videoName = currentTitle + '-' + chatID;
+        if (useSha256sumPostfix) {
+            let postfixfull = await getBlobSha256sum(blob);
+            let postfix = postfixfull.substr(0, 12);
+            videoName = videoName + postfix;
+        } else {
+            let timeStr = getYmdHMS();
+            videoName = videoName + timeStr;
+        }
+        if (customPostfixName) {
+            videoName = videoName + '-' + customPostfixName;
+        }
+        videoName = videoName + '.mp4';
+
         a.download = videoName;
         a.style.display = 'none';
         document.body.appendChild(a);
@@ -299,4 +326,13 @@ function getYmdHMS() {
     const result = `${Y}${m}${d}${H}${M}${S}`;
 
     return result;
+}
+
+async function getBlobSha256sum(blob) {
+    const arrayBuffer = await blob.arrayBuffer();
+    const hashBuffer = await crypto.subtle.digest('SHA-256', arrayBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const sha256sum = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+    return sha256sum;
 }
