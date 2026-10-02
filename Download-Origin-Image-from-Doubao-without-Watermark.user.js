@@ -118,7 +118,7 @@ function createImageDownloadButton() {
 
     link.style.zIndex = 1;
     link.style.textDecoration = 'none';
-    link.style.opacity = '0.8';
+    link.style.opacity = '0.7';
 
     const x = 0;
     const y = 0;
@@ -171,7 +171,7 @@ function createVideoDownloadButton() {
 
     link.style.zIndex = 1;
     link.style.textDecoration = 'none';
-    link.style.opacity = '0.8';
+    link.style.opacity = '0.7';
 
     const x = 0;
     const y = 0;
