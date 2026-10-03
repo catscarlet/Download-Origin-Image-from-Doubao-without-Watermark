@@ -14,7 +14,7 @@
 
 官方重新在 **「AI 生成水印设置」** 提供了 **「去除“AI 生成”水印」** 功能，现在可以直接使用官方的下载按钮保存无水印图片了。
 
-本脚本仍会继续更新，提供对预览图下载的功能。
+本脚本仍会继续更新，提供对预览图片和预览视频的下载功能。
 
 ### 2025.06 **豆包已经封杀了从网站上通过预览图直接获取无水印图片的方式。**
 
@@ -24,15 +24,15 @@
 
 * * *
 
-这曾是一个可以让你从 _[豆包（www.doubao.com）](https://www.doubao.com)_ 直接下载无水印图片 的 userscript 。
+这是一个可以让你从 _[豆包（www.doubao.com）](https://www.doubao.com)_ 直接下载无水印图片 的 userscript 。
 
 -   **重要提示**：此脚本可能随 _[豆包（www.doubao.com）](https://www.doubao.com)_ 网站的更新而失效。
 -   **重要提示2025.06**：2025.06此脚本已因 _[豆包（www.doubao.com）](https://www.doubao.com)_ 网站更新而 **无法直接获取无水印图片**。
--   **重要提示2026.07**：此脚本已因 _[豆包（www.doubao.com）](https://www.doubao.com)_ 网站更新而 **又能用了**。
+-   **重要提示2026.07**：此脚本已因 _[豆包（www.doubao.com）](https://www.doubao.com)_ 网站更新而 **又能直接获取无水印图片** 了。
 
 ## 截图
 
-![snapshot_3columns.webp](snapshot_3columns.webp)
+![snapshot_3columns_0.10.0.webp](snapshot_3columns_0.10.0.webp)
 
 ## 使用说明
 
@@ -64,29 +64,29 @@
 
 #### 1. 下载预览图片文件
 
-成功安装本脚本后，在图片预览框体的左上角会新增一个 **「下载」** 按钮。点击后即可下载由 _当前标题+会话ID+下载时间_ 为文件名的预览图图片。
+成功安装本脚本后，在图片预览框体的左上角会新增一个 **「下载」** 按钮。点击后即可下载预览图图片。
 
-![snapshot_2columns.webp](snapshot_2columns.webp)
+![snapshot_2columns_0.10.0.webp](snapshot_2columns_0.10.0.webp)
 
 #### 2. 下载预览视频文件
 
 本脚本同时也提供 **下载预览视频** 的功能。
 
-成功安装本脚本后，在视频预览框体的左上角会新增一个 **「下载」** 按钮。点击后即可下载由 _当前标题+会话ID+下载时间_ 为文件名的预览视频文件。
+成功安装本脚本后，在视频预览框体的左上角会新增一个 **「下载」** 按钮。点击后即可下载预览视频文件。
 
-![snapshot_video.webp](snapshot_video.webp)
+![snapshot_video_0.10.0.webp](snapshot_video_0.10.0.webp)
 
 ### 兼容性
 
 脚本可正确在以下用户脚本管理器中运行：
 
--   Tampermonkey: 5.4.0
+-   Tampermonkey: 5.5.0
 -   Tampermonkey Legacy (MV2): 5.1.1
 
 脚本可正确在以下浏览器中运行：
 
--   Firefox: 144.0.0
--   Firefox ESR: 115.22.0esr (Win7 可用)
+-   Firefox: 157.0.0
+-   Firefox ESR: 115.42.0esr (Win7 可用)
 -   Chrome: 109.0.5414.120 (Win7 可用)(Chrome版本小于120需要使用 Tampermonkey Legacy)
 
 ## 已知问题
