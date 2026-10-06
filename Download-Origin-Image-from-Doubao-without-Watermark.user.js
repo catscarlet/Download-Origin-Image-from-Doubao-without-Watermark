@@ -269,7 +269,7 @@ async function getCrossVideo(link) {
     const chatID = document.location.pathname.replace('/chat/', '').trim();
 
     const videoNodelist = link.parentNode.querySelectorAll('video');
-    const videoUrl = Array.from(videoNodelist).find((element) => element.tagName.toLowerCase() == 'video').src;
+    const videoUrl = Array.from(videoNodelist).find((element) => element.tagName.toLowerCase() == 'video').currentSrc;
 
     try {
         const response = await fetch(videoUrl, {mode: 'cors'});
