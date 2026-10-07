@@ -6,6 +6,16 @@
 
 (from new to old)
 
+## 0.10.0
+
+- **New feature: SHA256 hash as filename postfix.**
+- Fix video download failures.
+- Minor visual changes.
+
+The main purpose I made this userscript is to automatically rename downloads, to prevent duplicate filenames. The old way was using chatID and a timestamp as the filename postfix, but it could not avoid duplicate downloads.
+
+The new **SHA256 hash as filename postfix feature** uses the *first 12 characters of the SHA256 hash* of the file as the postfix. Now each file has it's unique postfix. This means when you download the same image/video multiple times, the filenames will be the same, and the browser/system will automatically add `(n)`, indicating you they are duplicate downloads.
+
 ## 0.9.2
 
 - Change Button Downloading style to 'wait' for better visual effect
