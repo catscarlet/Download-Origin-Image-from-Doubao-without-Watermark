@@ -6,6 +6,10 @@
 
 (from new to old)
 
+## 0.10.1
+
+- Add the missing hyphen back to video filenames.
+
 ## 0.10.0
 
 - **New feature: SHA256 hash as filename postfix.**
