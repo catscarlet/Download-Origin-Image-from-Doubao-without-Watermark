@@ -278,7 +278,7 @@ async function getCrossVideo(link) {
         const a = document.createElement('a');
         a.href = url;
 
-        let videoName = currentTitle + '-' + chatID;
+        let videoName = currentTitle + '-' + chatID + '-';
         if (useSha256sumPostfix) {
             let postfixfull = await getBlobSha256sum(blob);
             let postfix = postfixfull.substr(0, 12);
